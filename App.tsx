@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View>
       <Text>welcome nithishuuu</Text>
+      <Text>WELCOME ANANDHUUUUU GUNAAAA TAMILUUU</Text>
     </View>
   )
 }
