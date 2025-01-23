@@ -1,13 +1,14 @@
-import { View, Text,TouchableOpacity, Alert } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
-
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native'
+import BottomTab from './Navigation/BottomTab'
+const App = () => {
   return (
-    <View>
-      <TouchableOpacity onPress={()=>Alert.alert("duck guna ")}/>
-      <Text>welcome nithishuuu</Text>
-      <Text>WELCOME ANANDHUUUUU GUNAAAA TAMILUUU</Text>
-      </TouchableOpacity>
-    </View>
+   <NavigationContainer>
+     <BottomTab />
+
+   </NavigationContainer>
   )
 }
+
+export default App
