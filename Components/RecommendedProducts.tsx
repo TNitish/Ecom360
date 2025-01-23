@@ -6,7 +6,7 @@ const RecommendedProducts=({navigation})=>{
     const Products=[
         {
             id:1,
-            category:"Phones",
+            category:"tamil-products",
             image:require('../Assets/ecommerceimgone.jpg'),
             rate:'₹145',
             ratings:'4.5',
