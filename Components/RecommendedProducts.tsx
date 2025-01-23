@@ -6,7 +6,7 @@ const RecommendedProducts=({navigation})=>{
     const Products=[
         {
             id:1,
-            category:"tamil-products",
+            category:"guna ducked",
             image:require('../Assets/ecommerceimgone.jpg'),
             rate:'₹145',
             ratings:'4.5',
