@@ -1,16 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Carousel from '../Components/Carousel'
 import HeaderComponent from '../Components/HeaderComponent'
 import RecommendedProducts from '../Components/RecommendedProducts'
 
+import PurchasedCards from '../Components/PurchasedCards'
+import Sponsered from '../Components/Sponsered'
+import SamsungS25Series from '../Components/SamsungS25Series'
+import SeasonsTopTrends from '../Components/SeasonTopTrends'
+
+
 const HomeScreen = ({navigation}) => {
   return (
-    <>
+    <ScrollView>
     <HeaderComponent/>
     <Carousel navigation={navigation}/>
     <RecommendedProducts navigation={navigation}/>
-    </>
+    
+    <PurchasedCards navigation={navigation}/>
+    <Sponsered navigation={navigation}/>
+    <SamsungS25Series navigation={navigation}/>
+    <SeasonsTopTrends navigation={navigation}/>
+    
+    </ScrollView>
   )
 }
 
