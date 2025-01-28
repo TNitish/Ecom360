@@ -3,7 +3,6 @@ import React from 'react'
 import Carousel from '../Components/Carousel'
 import HeaderComponent from '../Components/HeaderComponent'
 import RecommendedProducts from '../Components/RecommendedProducts'
-
 const HomeScreen = ({navigation}) => {
   return (
     <>

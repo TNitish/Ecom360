@@ -61,7 +61,7 @@ const RecommendedProducts=({navigation})=>{
         <FlatList 
         data={Products}
         renderItem={renderProduct}
-        keyExtractor={(item)=>item.id}
+        keyExtractor={(item)=>item.id.toString()}
         horizontal={true}
         />
         </View>
