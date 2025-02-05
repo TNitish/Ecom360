@@ -8,12 +8,14 @@ import PurchasedCards from '../Components/PurchasedCards'
 import Sponsered from '../Components/Sponsered'
 import SamsungS25Series from '../Components/SamsungS25Series'
 import SeasonsTopTrends from '../Components/SeasonTopTrends'
+import SearchingBar from '../Components/SearchingBar'
 
 
 const HomeScreen = ({navigation}) => {
   return (
     <ScrollView>
     <HeaderComponent/>
+    <SearchingBar/>
     <Carousel navigation={navigation}/>
     <RecommendedProducts navigation={navigation}/>
     
@@ -21,6 +23,7 @@ const HomeScreen = ({navigation}) => {
     <Sponsered navigation={navigation}/>
     <SamsungS25Series navigation={navigation}/>
     <SeasonsTopTrends navigation={navigation}/>
+    
     
     </ScrollView>
   )
