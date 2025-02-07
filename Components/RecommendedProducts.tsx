@@ -1,20 +1,28 @@
 import React from "react";
+import { useState,useEffect } from "react";
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 const RecommendedProducts = ({ navigation }) => {
-    const Products = [
-        { id: 1, category: "Guna", image: require('../Assets/ecommerceimgone.jpg'), rate: '₹145', ratings: '4.5', offers: '10%' },
-        { id: 2, category: "Shoes", image: require('../Assets/ecommerceimgtwo.jpg'), rate: '₹195', ratings: '3.9', offers: '24%' },
-        { id: 3, category: "Mens", image: require('../Assets/ecommerceimgthree.jpg'), rate: '₹145', ratings: '4.1', offers: '20%' },
-        { id: 4, category: "Slippers", image: require('../Assets/ecommerceimgtwo.jpg'), rate: '₹185', ratings: '4.3', offers: '25%' },
-    ];
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+      fetch('https://bcd8-59-97-51-97.ngrok-free.app/store/products/') // Replace with your actual API URL
+        .then(response => response.json())
+        .then(data => {
+          if (data.products) {
+            setProducts(data.products);
+          }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }, []);
+  
 
     const renderProduct = ({ item }) => (
         <TouchableOpacity style={styles.proCard} onPress={() => navigation.navigate('ProductList', { Category: item.category })}>
             <Image source={item.image} style={styles.img} />
-            <Text style={styles.categoryText}>{item.category}</Text>
-            <Text style={styles.rateText}>Starts from {item.rate}</Text>
-            <Text style={styles.offerText}>Upto {item.offers} off 🤩</Text>
+            <Text style={styles.categoryText}>{item.name}</Text>
+            <Text style={styles.rateText}>Starts from {item.price}</Text>
+            <Text style={styles.offerText}>Upto {item.offer} off 🤩</Text>
         </TouchableOpacity>
     );
 
@@ -23,7 +31,7 @@ const RecommendedProducts = ({ navigation }) => {
             <Text style={styles.title}>Recommended Categories for You</Text>
             <Text style={styles.subtitle}>Based on Your Activity</Text>
             <FlatList 
-                data={Products}
+                data={products}
                 renderItem={renderProduct}
                 keyExtractor={(item) => item.id.toString()}
                 horizontal
