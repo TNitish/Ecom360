@@ -13,6 +13,7 @@ import {
 const screenWidth = Dimensions.get("window").width;
 
 const PurchasedCards = ({ navigation }) => {
+  
   const scrollRef = useRef(null);
   const [isScrolling, setIsScrolling] = useState(true); // State to manage auto-scrolling
   const Products = [
