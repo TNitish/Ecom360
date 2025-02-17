@@ -17,7 +17,6 @@ const StackNav=()=>{
             <Stack.Screen name="ProductList" component={ProductList} options={{title:"Product List"}}/>
             <Stack.Screen name="ProductDetails" component={ProductDetails} options={{title:"Product Details"}}/>
             <Stack.Screen name="Product screen" component={ProductScreen} options={{title:"Product Details"}}/>
-            
         </Stack.Navigator>
     )
 }

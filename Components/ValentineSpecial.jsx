@@ -1,28 +1,37 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+import React, { useContext } from "react";
+import { View, Text, Button, FlatList } from "react-native";
+import { CartContext } from "../Context/CartContext";
 
-const products = [
-  { id: '1', title: 'Date night dresses', discount: 'Min. 65% Off', image: require('../Assets/card.jpg') },
-  { id: '2', title: 'Love boxes', discount: 'Up to 65% Off', image: require('../Assets/card.jpg') },
-  { id: '3', title: 'Valentine Teddy', discount: 'Flat 50% Off', image: require('../Assets/card.jpg') },
-  { id: '4', title: 'Romantic Perfume', discount: '30% Off', image: require('../Assets/card.jpg') },
-  { id: '5', title: 'Couple Watches', discount: 'Buy 1 Get 1 Free', image: require('../Assets/card.jpg') },
+// Sample Product Data
+const sampleProducts = [
+  { id: "1", name: "iPhone 14", price: 999 },
+  { id: "2", name: "Samsung Galaxy S23", price: 849 },
+  { id: "3", name: "Google Pixel 7", price: 599 },
+  { id: "4", name: "OnePlus 11", price: 699 },
 ];
 
-const ValentinesSpecial = () => {
+const ProductScreen = () => {
+  const { addToCart } = useContext(CartContext);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Valentine's specials!</Text>
+    <View style={{ padding: 20 }}>
+      <Text style={{ fontSize: 24, fontWeight: "bold" }}>📱 Products</Text>
+      
       <FlatList
-        horizontal
-        data={products}
+        data={sampleProducts}
         keyExtractor={(item) => item.id}
-        showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={item.image} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.discount}>{item.discount}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingVertical: 10,
+              borderBottomWidth: 1,
+              borderBottomColor: "#ddd",
+            }}
+          >
+            <Text style={{ fontSize: 18 }}>{item.name} - ${item.price}</Text>
+            <Button title="Add to Cart" onPress={() => addToCart(item)} />
           </View>
         )}
       />
@@ -30,13 +39,4 @@ const ValentinesSpecial = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: { backgroundColor: '#ffebef', padding: 15, borderRadius: 15 },
-  header: { fontSize: 18, fontWeight: 'bold', color: '#ff0066', marginBottom: 10 },
-  card: { backgroundColor: '#fff', borderRadius: 10, padding: 10, marginRight: 10, alignItems: 'center' },
-  image: { width: 120, height: 120, borderRadius: 10 },
-  title: { fontSize: 14, fontWeight: 'bold', textAlign: 'center', marginTop: 5 },
-  discount: { fontSize: 12, color: '#ff0066', fontWeight: 'bold' },
-});
-
-export default ValentinesSpecial;
+export default ProductScreen;

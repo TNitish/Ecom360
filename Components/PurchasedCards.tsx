@@ -13,21 +13,7 @@ import {
 const screenWidth = Dimensions.get("window").width;
 
 const PurchasedCards = ({ navigation }) => {
-   useEffect(()=>{
-          const getData=async()=>{
-              try {
-                  const data=await fetch('https://bcd8-59-97-51-97.ngrok-free.app/store/products/');
-                  const res=data.json();
-                  console.log(res,"from api");
-                  
-                  
-              } catch (error) {
-                  console.log(error);
-                  
-              }
-          }
-          getData();
-      },[])
+  
   const scrollRef = useRef(null);
   const [isScrolling, setIsScrolling] = useState(true); // State to manage auto-scrolling
   const Products = [

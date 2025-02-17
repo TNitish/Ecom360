@@ -6,11 +6,11 @@ const RecommendedProducts = ({ navigation }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-      fetch('https://bcd8-59-97-51-97.ngrok-free.app/store/products/') // Replace with your actual API URL
+      fetch('https://f387-59-97-51-97.ngrok-free.app/Store/Product/') // Replace with your actual API URL
         .then(response => response.json())
         .then(data => {
-          if (data.products) {
-            setProducts(data.products);
+          if (data) {
+            setProducts(data);
           }
         })
         .catch(error => console.error('Error fetching data:', error));
