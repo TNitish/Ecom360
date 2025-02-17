@@ -7,21 +7,21 @@ const SeasonsTopTrends = ({ navigation }) => {
       <Text style={styles.header}>Season's Top Trends!</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
         {/* Card 1 */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate('ProductDetails')}>
           <Image source={require("../Assets/fleecejacket.jpg")} style={styles.image} />
           <Text style={styles.title}>Fleece & Fur Jackets</Text>
           <Text style={styles.subtitle}>From ₹499</Text>
           <Text style={styles.cta}>→</Text>
         </TouchableOpacity>
         {/* Card 2 */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate('ProductDetails')}>
           <Image source={require("../Assets/Artpaints.jpg")} style={styles.image} />
           <Text style={styles.title}>Art & Paintings</Text>
           <Text style={styles.subtitle}>Just ₹1,299</Text>
           <Text style={styles.cta}>→</Text>
         </TouchableOpacity>
         {/* Card 3 */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate('ProductDetails')}>
           <Image source={require("../Assets/WinterWear.jpg")} style={styles.image} />
           <Text style={styles.title}>Winter Wear</Text>
           <Text style={styles.subtitle}>Up to 50% Off</Text>

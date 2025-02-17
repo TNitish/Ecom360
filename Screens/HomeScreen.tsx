@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
     <SamsungS25Series navigation={navigation}/>
     <SeasonsTopTrends navigation={navigation}/>
     
-    
+  
     </ScrollView>
   )
 }

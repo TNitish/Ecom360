@@ -1,47 +1,27 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Sponsered = ({navigation}) => {
+const sponsoredItems = [
+  { id: 1, image: require("../Assets/card.jpg"), title: "Min. 50% Off", subtitle: "Men's footwear" },
+  { id: 2, image: require("../Assets/product2.jpg"), title: "Apply now", subtitle: "10X Reward points" },
+  { id: 3, image: require("../Assets/product3.jpg"), title: "Up to 25% Off", subtitle: "Fresh start" },
+  { id: 4, image: require("../Assets/product4.jpg"), title: "Apply now", subtitle: "Rewards & Benefits" },
+  { id: 5, image: require("../Assets/product5.jpg"), title: "Apply now", subtitle: "Exciting Offers" },
+  { id: 6, image: require("../Assets/product6.jpg"), title: "Get it now", subtitle: "Insta EMI card" }
+];
+
+const Sponsered = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Sponsored</Text>
       <View style={styles.gridContainer}>
-        {/* Card 1 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/card.jpg")} style={styles.image} />
-          <Text style={styles.title}>Min. 50% Off</Text>
-          <Text style={styles.subtitle}>Men's footwear</Text>
-        </TouchableOpacity>
-        {/* Card 2 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/product2.jpg")} style={styles.image} />
-          <Text style={styles.title}>Apply now</Text>
-          <Text style={styles.subtitle}>10X Reward points</Text>
-        </TouchableOpacity>
-        {/* Card 3 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/product3.jpg")} style={styles.image} />
-          <Text style={styles.title}>Up to 25% Off</Text>
-          <Text style={styles.subtitle}>Fresh start</Text>
-        </TouchableOpacity>
-        {/* Card 4 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/product4.jpg")} style={styles.image} />
-          <Text style={styles.title}>Apply now</Text>
-          <Text style={styles.subtitle}>Rewards & Benefits</Text>
-        </TouchableOpacity>
-        {/* Card 5 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/product5.jpg")} style={styles.image} />
-          <Text style={styles.title}>Apply now</Text>
-          <Text style={styles.subtitle}>Exciting Offers</Text>
-        </TouchableOpacity>
-        {/* Card 6 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/product6.jpg")} style={styles.image} />
-          <Text style={styles.title}>Get it now</Text>
-          <Text style={styles.subtitle}>Insta EMI card</Text>
-        </TouchableOpacity>
+        {sponsoredItems.map((item) => (
+          <TouchableOpacity key={item.id} style={styles.card} onPress={() => navigation.navigate('MensFootwear')}>
+            <Image source={item.image} style={styles.image} />
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.subtitle}>{item.subtitle}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
     </View>
   );

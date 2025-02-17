@@ -1,32 +1,40 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
-const SamsungS25Series = ({ navigation}) => {
+const products = [
+  {
+    id: 1,
+    name: "Galaxy S25 Ultra",
+    image: require("../Assets/S25ultra.webp"),
+    subtitle: "Get benefits up to ₹21,000*",
+  },
+  {
+    id: 2,
+    name: "Galaxy S25",
+    image: require("../Assets/s25.webp"),
+    subtitle: "Get benefits up to ₹11,000*",
+  },
+  {
+    id: 3,
+    name: "Galaxy S25+",
+    image: require("../Assets/s25Plus.jpg"),
+    subtitle: "Get benefits up to ₹12,000*",
+  },
+];
+
+const SamsungS25Series = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Samsung S25 Series</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
-        {/* Card 1 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/S25ultra.webp")} style={styles.image} />
-          <Text style={styles.title}>Galaxy S25 Ultra</Text>
-          <Text style={styles.subtitle}>Get benefits up to ₹21,000*</Text>
-          <Text style={styles.cta}>Pre-order Now →</Text>
-        </TouchableOpacity>
-        {/* Card 2 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/s25.webp")} style={styles.image} />
-          <Text style={styles.title}>Galaxy S25</Text>
-          <Text style={styles.subtitle}>Get benefits up to ₹11,000*</Text>
-          <Text style={styles.cta}>Pre-order Now →</Text>
-        </TouchableOpacity>
-        {/* Card 3 */}
-        <TouchableOpacity style={styles.card}>
-          <Image source={require("../Assets/s25Plus.jpg")} style={styles.image} />
-          <Text style={styles.title}>Galaxy S25+</Text>
-          <Text style={styles.subtitle}>Get benefits up to ₹12,000*</Text>
-          <Text style={styles.cta}>Pre-order Now →</Text>
-        </TouchableOpacity>
+        {products.map((item) => (
+          <TouchableOpacity key={item.id} style={styles.card} onPress={() => navigation.navigate('S25ultra', { productId: item.id })}>
+            <Image source={item.image} style={styles.image} />
+            <Text style={styles.title}>{item.name}</Text>
+            <Text style={styles.subtitle}>{item.subtitle}</Text>
+            <Text style={styles.cta}>Pre-order Now →</Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </View>
   );

@@ -82,6 +82,7 @@ const Dress = () => {
               <Text style={styles.price}>{item.price}</Text>
             </View>
             <Text style={styles.discount}>{item.discountPrice}</Text>
+
           </View>
         )}
       />

@@ -29,7 +29,7 @@ const Mini = () => {
 
       <View style={styles.iconsContainer}>
         <Image source={require('../Assets/whishlist1.png')} style={styles.icon} />
-        <Image source={require('../Assets/search1.png')} style={styles.icon} />
+        <Image source={require('../Assets/share.png')} style={styles.icon} />
       </View>
 
       <Text style={styles.name}>{product.name} <Text style={styles.variant}>{product.variant}</Text></Text>
