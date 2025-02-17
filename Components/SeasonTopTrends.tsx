@@ -5,7 +5,7 @@ const SeasonsTopTrends = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Season's Top Trends!</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer} nestedScrollEnabled={true}>
         {/* Card 1 */}
         <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate('ProductDetails')}>
           <Image source={require("../Assets/fleecejacket.jpg")} style={styles.image} />

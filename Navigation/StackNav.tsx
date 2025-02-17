@@ -7,7 +7,7 @@ import HomeScreen from "../Screens/HomeScreen";
 import ProductDetails from "../Screens/ProductDetails";
 import ProductList from "../Screens/ProductList";
 import ProductScreen from "../Screens/ProductList";
-import MensFootwear from "../Screens/SponseredList";
+import MensFootwear from "../Screens/SponseredList";6
 import S25ultra from "../Screens/S25ultra";
 
 const Stack = createNativeStackNavigator();

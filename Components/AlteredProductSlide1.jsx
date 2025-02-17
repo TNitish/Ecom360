@@ -123,6 +123,7 @@ const ProductSlide1 = ({ navigation }) => {
         accessibilityLabel={`View details about ${item.category}`}
       >
         <Animated.View
+        nestedScrollEnabled={true}>
           style={[
             styles.proCard,
             {
@@ -164,6 +165,7 @@ const ProductSlide1 = ({ navigation }) => {
         onTouchEnd={handleScrollEnd} // Resume auto-scroll on release
         snapToInterval={160} // Snap to each product's width
         decelerationRate="fast" // Faster deceleration for snapping effect
+        nestedScrollEnabled={true}
       >
         {Products.map((item) => renderProduct(item))}
       </ScrollView>

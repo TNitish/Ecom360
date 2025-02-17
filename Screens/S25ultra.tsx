@@ -21,7 +21,7 @@ const productDetails = [
 
 const S25ultra = ({ navigation }) => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView  nestedScrollEnabled={true} style={styles.container}>
       {productDetails.map((product) => (
         <View key={product.id}>
           <Image source={product.image} style={styles.productImage} />

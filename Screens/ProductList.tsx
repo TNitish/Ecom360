@@ -11,7 +11,7 @@ import Mini from '../Screens/Mini'
 
 const ProductList = () => {
   return (
-    <ScrollView>
+    <ScrollView nestedScrollEnabled={true}>
         <AlteredProductSlide1 navigation={undefined} />
         <TopSaleDeals/>
         <Dress />

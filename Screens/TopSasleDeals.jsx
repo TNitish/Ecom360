@@ -50,10 +50,10 @@ const deals = [
 
 const TopSaleDeals = () => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} >
       <Text style={styles.header}>Top Sale Deals</Text>
       <Text style={styles.subHeader}>Shop at unbeatable prices</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} nestedScrollEnabled={true} >
         {deals.map((item) => (
           <View key={item.id} style={styles.card}>
             <Image source={item.image} style={styles.image} />
