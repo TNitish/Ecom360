@@ -7,8 +7,13 @@ import HomeScreen from "../Screens/HomeScreen";
 import ProductDetails from "../Screens/ProductDetails";
 import ProductList from "../Screens/ProductList";
 import ProductScreen from "../Screens/ProductList";
-import MensFootwear from "../Screens/SponseredList";6
+import MensFootwear from "../Screens/SponseredList";
 import S25ultra from "../Screens/S25ultra";
+import HeaderComponent from "../Components/HeaderComponent";
+import HeaderComponent2 from "../Components/HeaderComponent2";
+import Mini from "../Screens/Mini";
+import Laptop from "../Components/Laptop";
+import CarsoulProductList from "../Screens/CarsoulProductList";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +26,12 @@ const StackNav=()=>{
             <Stack.Screen name="Product screen" component={ProductScreen} options={{title:"Product Details"}}/>
             <Stack.Screen name="MensFootwear" component={MensFootwear} options={{title:"Mens Footwear"}}/>
             <Stack.Screen name="S25ultra" component={S25ultra} options={{title:"Samsung S25 Ultra"}}/>
+            <Stack.Screen name="HeaderComponent" component={HeaderComponent}/>
+            <Stack.Screen name="mini" component={Mini} />
+            <Stack.Screen name="Lap" component={Laptop} />
+            <Stack.Screen name="HeaderComponent2" component={HeaderComponent2} />
+            <Stack.Screen name="CarsoulProd" component={CarsoulProductList} />
+
          </Stack.Navigator>
     )
 }

@@ -13,9 +13,9 @@ import {
 const screenWidth = Dimensions.get("window").width;
 
 const PurchasedCards = ({ navigation }) => {
-  
   const scrollRef = useRef(null);
-  const [isScrolling, setIsScrolling] = useState(true); // State to manage auto-scrolling
+  const [isScrolling, setIsScrolling] = useState(true);
+  
   const Products = [
     {
       id: 1,
@@ -79,18 +79,17 @@ const PurchasedCards = ({ navigation }) => {
     let scrollPosition = 0;
     const interval = setInterval(() => {
       if (isScrolling && scrollRef.current) {
-        scrollPosition += 160; // Move to the next product
+        scrollPosition += 160;
         scrollRef.current.scrollTo({
           x: scrollPosition,
           animated: true,
         });
 
-        // Reset position when reaching the end
         if (scrollPosition > (Products.length - 1) * 160) {
           scrollPosition = 0;
         }
       }
-    }, 3000); // Auto-scroll every 3 seconds
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [isScrolling]);
@@ -103,14 +102,14 @@ const PurchasedCards = ({ navigation }) => {
 
     const onHoverStart = () => {
       Animated.spring(scaleValue, {
-        toValue: 1.1, // Zoom to 10% larger
+        toValue: 1.05, // Slight zoom effect
         useNativeDriver: true,
       }).start();
     };
 
     const onHoverEnd = () => {
       Animated.spring(scaleValue, {
-        toValue: 1, // Reset to original size
+        toValue: 1, // Reset zoom
         useNativeDriver: true,
       }).start();
     };
@@ -119,15 +118,15 @@ const PurchasedCards = ({ navigation }) => {
       <TouchableOpacity
         key={item.id}
         onPress={() => navigation.navigate("ProductList", { Category: item.category })}
-        onMouseEnter={onHoverStart} // Handles hover (on web)
-        onMouseLeave={onHoverEnd} // Resets zoom when hover ends
+        onMouseEnter={onHoverStart} 
+        onMouseLeave={onHoverEnd}
         accessibilityLabel={`View details about ${item.category}`}
       >
         <Animated.View
           style={[
             styles.proCard,
             {
-              transform: [{ scale: scaleValue }], // Apply zoom effect
+              transform: [{ scale: scaleValue }],
             },
           ]}
         >
@@ -151,12 +150,12 @@ const PurchasedCards = ({ navigation }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
-        onScrollBeginDrag={handleScrollStart} // Stop auto-scroll when user begins dragging
-        onScrollEndDrag={handleScrollEnd} // Resume auto-scroll after user stops dragging
-        onTouchStart={handleScrollStart} // Stop auto-scroll on touch
-        onTouchEnd={handleScrollEnd} // Resume auto-scroll on release
-        snapToInterval={160} // Snap to each product's width
-        decelerationRate="fast" // Faster deceleration for snapping effect
+        onScrollBeginDrag={handleScrollStart} 
+        onScrollEndDrag={handleScrollEnd} 
+        onTouchStart={handleScrollStart} 
+        onTouchEnd={handleScrollEnd}
+        snapToInterval={160}
+        decelerationRate="fast"
         nestedScrollEnabled={true}
       >
         {Products.map((item) => renderProduct(item))}
@@ -168,62 +167,66 @@ const PurchasedCards = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    backgroundColor: "#fff", // Cleaner background
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 8,
     color: "#333",
+    letterSpacing: 1,
   },
   subtitle: {
     fontSize: 17,
     fontWeight: "700",
-    marginBottom: 15,
-    color: "gray",
+    marginBottom: 20,
+    color: "#777",
   },
   proCard: {
     marginRight: 15,
-    backgroundColor: "#f9f9f9",
-    borderRadius: 20,
+    backgroundColor: "#f7f7f7", 
+    borderRadius: 15, 
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
     elevation: 5,
     width: 160,
     height: 250,
     alignItems: "center",
-    padding: 10,
+    padding: 12,
+    overflow: "hidden", // For smooth image transitions
   },
   img: {
     width: "100%",
     height: 130,
-    borderRadius: 15,
+    borderRadius: 12,
     resizeMode: "cover",
+    marginBottom: 10,
   },
   cardContent: {
     marginTop: 10,
-    width: "100%",
     alignItems: "center",
   },
   categoryText: {
-    fontWeight: "700",
+    fontWeight: "600",
     fontSize: 16,
     color: "#333",
-    marginBottom: 4,
+    marginBottom: 5,
     textAlign: "center",
   },
   rateText: {
     fontWeight: "400",
     fontSize: 14,
     color: "#666",
-    marginBottom: 4,
+    marginBottom: 5,
+    textAlign: "center",
   },
   offerText: {
-    fontWeight: "700",
+    fontWeight: "600",
     fontSize: 14,
-    color: "#ff5722",
+    color: "#ff5722", 
     textAlign: "center",
   },
 });

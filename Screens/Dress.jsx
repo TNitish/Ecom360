@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 
 const deals = [
   {
@@ -40,7 +40,7 @@ const deals = [
   },
 ];
 
-const Dress = () => {
+const Dress = ({navigation}) => {
   const [wishlist, setWishlist] = useState({});
 
   const toggleWishlist = (id) => {
@@ -51,18 +51,18 @@ const Dress = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Dress</Text>
       <FlatList
         data={deals}
         numColumns={2}
         keyExtractor={(item) => item.id}
+        style={{ flex: 1 }} // Ensure FlatList is scrollable
+        ListFooterComponent={<View style={{ height: 20 }} />} // Adds bottom padding safely
         renderItem={({ item }) => (
-
           <View style={styles.card}>
             {/* Sponsored Tag */}
             <View style={styles.sponsoredContainer}>
-              
               <Text style={styles.sponsoredText}>BestSeller</Text>
               <TouchableOpacity onPress={() => toggleWishlist(item.id)}>
                 <Text style={[styles.heartIcon, { color: wishlist[item.id] ? 'red' : '#999' }]}>❤︎</Text>
@@ -82,16 +82,16 @@ const Dress = () => {
               <Text style={styles.price}>{item.price}</Text>
             </View>
             <Text style={styles.discount}>{item.discountPrice}</Text>
-
           </View>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,  // Ensures full screen height
     backgroundColor: '#fff',
     paddingVertical: 10,
   },
@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
   },
   heartIcon: {
     fontSize: 20,
-    
   },
   image: {
     width: '100%',
@@ -171,6 +170,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    textAlign: 'center',
   },
 });
 

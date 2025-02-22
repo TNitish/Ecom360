@@ -28,7 +28,7 @@ const SamsungS25Series = ({ navigation }) => {
       <Text style={styles.header}>Samsung S25 Series</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer} nestedScrollEnabled={true}>
         {products.map((item) => (
-          <TouchableOpacity key={item.id} style={styles.card} onPress={() => navigation.navigate('S25ultra', { productId: item.id })}>
+          <TouchableOpacity key={item.id} style={styles.card} onPress={() => navigation.navigate('S25ultra', { product: item })}>
             <Image source={item.image} style={styles.image} />
             <Text style={styles.title}>{item.name}</Text>
             <Text style={styles.subtitle}>{item.subtitle}</Text>

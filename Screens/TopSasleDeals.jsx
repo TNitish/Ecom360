@@ -48,7 +48,7 @@ const deals = [
   },
 ];
 
-const TopSaleDeals = () => {
+const TopSaleDeals = ({navigation}) => {
   return (
     <View style={styles.container} >
       <Text style={styles.header}>Top Sale Deals</Text>
@@ -64,7 +64,7 @@ const TopSaleDeals = () => {
               <Text style={styles.price}>{item.price}</Text>
             </View>
             <Text style={styles.discount}>{item.discount}</Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HeaderComponent2",{ Category:item.category })}>
               <Text style={styles.buttonText}>View Deal</Text>
             </TouchableOpacity>
           </View>

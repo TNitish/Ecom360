@@ -1,145 +1,147 @@
 import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
-
-// Importing images statically
-import mini from '../Assets/mini.jpg'; //
-import car from '../Assets/car.png';
+import HeaderComponent from '../Components/HeaderComponent';
 
 // Product list with local images
 const products = [
   {
     id: '1',
-    name: 'Infinix Note 40 Pro 5G (Vintage Green, 256 GB)',
-    price: 19999,
-    oldPrice: 27999,
-    discount: '28%',
-    image: mini, // Using imported image variable
-    rating: 4.5,
-    reviews: 34590,
+    name: 'Samsung Galaxy S23 Ultra (Phantom Black, 512 GB)',
+    price: 124999,
+    oldPrice: 134999,
+    discount: '7%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.8,
+    reviews: 12500,
     delivery: 'Delivery tomorrow',
-    offerPrice: 17999,
+    offerPrice: 119999,
   },
   {
     id: '2',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'iPhone 15 Pro Max (Titanium Blue, 256 GB)',
+    price: 159999,
+    oldPrice: 169999,
+    discount: '6%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.9,
+    reviews: 15340,
+    delivery: 'Free delivery by 12th Feb',
+    offerPrice: 149999,
   },
   {
     id: '3',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'OnePlus 12 5G (Flowy Emerald, 512 GB)',
+    price: 69999,
+    oldPrice: 74999,
+    discount: '7%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.7,
+    reviews: 6745,
+    delivery: 'Delivery by 10th Feb',
+    offerPrice: 66999,
   },
   {
     id: '4',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'Google Pixel 8 Pro (Bay Blue, 128 GB)',
+    price: 99999,
+    oldPrice: 109999,
+    discount: '9%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.6,
+    reviews: 5120,
+    delivery: 'Delivery tomorrow',
+    offerPrice: 94999,
   },
   {
     id: '5',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'Redmi Note 13 Pro+ 5G (Fusion Black, 512 GB)',
+    price: 34999,
+    oldPrice: 39999,
+    discount: '12%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.4,
+    reviews: 12450,
+    delivery: 'Free delivery by 11th Feb',
+    offerPrice: 32999,
   },
   {
     id: '6',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
+    name: 'Vivo X100 Pro (Astro Black, 256 GB)',
+    price: 89999,
+    oldPrice: 99999,
+    discount: '10%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.7,
+    reviews: 3420,
     delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    offerPrice: 85999,
   },
   {
     id: '7',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
+    name: 'Realme GT 5G (Racing Yellow, 128 GB)',
+    price: 34999,
+    oldPrice: 39999,
+    discount: '13%',
+    image: require('../Assets/mini.jpg'),
     rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    reviews: 9475,
+    delivery: 'Delivery tomorrow',
+    offerPrice: 31999,
   },
   {
     id: '8',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'Asus ROG Phone 7 (Phantom Black, 512 GB)',
+    price: 99999,
+    oldPrice: 109999,
+    discount: '9%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.8,
+    reviews: 4300,
+    delivery: 'Free delivery by 9th Feb',
+    offerPrice: 96999,
   },
   {
     id: '9',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'Nothing Phone 2 (Dark Grey, 256 GB)',
+    price: 45999,
+    oldPrice: 49999,
+    discount: '8%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.6,
+    reviews: 7895,
+    delivery: 'Delivery tomorrow',
+    offerPrice: 43999,
   },
   {
     id: '10',
-    name: 'Infinix Note 40 Pro+ 5G (Racing Grey, 256 GB)',
-    price: 21999,
-    oldPrice: 32999,
-    discount: '33%',
-    image: car, // Using imported image variable
-    rating: 4.5,
-    reviews: 3744,
-    delivery: 'Free delivery by 10th Feb',
-    offerPrice: 19999,
+    name: 'iQOO 12 5G (Legend Edition, 256 GB)',
+    price: 59999,
+    oldPrice: 64999,
+    discount: '8%',
+    image: require('../Assets/mini.jpg'),
+    rating: 4.7,
+    reviews: 3125,
+    delivery: 'Free delivery by 9th Feb',
+    offerPrice: 57999,
   },
+
+
 ];
 
-const ProductDetails = ({navigation}) => {
+const ProductDetails = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("HeaderComponent")}
+          >
             {/* Image Section */}
             <Image source={item.image} style={styles.image} />
-            
+
             {/* Product Details Section */}
             <View style={styles.details}>
               <Text style={styles.name}>{item.name}</Text>

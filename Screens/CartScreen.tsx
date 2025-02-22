@@ -1,52 +1,85 @@
 import React, { useContext } from "react";
-import { View, Text, Button, FlatList } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet ,Alert} from "react-native";
 import { CartContext } from "../Context/CartContext";
 
-const CartScreen = () => {
-  const { cart, increaseQuantity, decreaseQuantity, totalPrice } = useContext(CartContext);
+const CartScreen = ({ navigation }) => {
+  const { cart, increaseQuantity, decreaseQuantity, removeFromCart, totalPrice } = useContext(CartContext);
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold" }}>🛒 Cart</Text>
-
+    <View style={styles.container}>
       {cart.length === 0 ? (
-        <Text>Your cart is empty.</Text>
+        <View style={styles.emptyCartContainer}>
+          <Text style={styles.emptyCartText}>Your cart is empty!</Text>
+          <TouchableOpacity style={styles.shopNowButton} onPress={() => navigation.navigate("Home")}>
+            <Text style={styles.shopNowText}>Shop Now</Text>
+          </TouchableOpacity>
+        </View>
       ) : (
         <>
           <FlatList
             data={cart}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  paddingVertical: 10,
-                  borderBottomWidth: 1,
-                  borderBottomColor: "#ddd",
-                }}
-              >
-                <Text style={{ fontSize: 18 }}>
-                  {item.name} - ${item.price} x {item.quantity}
-                </Text>
+              <View style={styles.cartItem}>
+                <Image source={item.image} style={styles.image} />
+                <View style={styles.details}>
+                  <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.price}>₹{item.price} x {item.quantity} = ₹{item.price * item.quantity}</Text>
+                  
+                  {/* Quantity Controls */}
+                  <View style={styles.quantityControl}>
+                    <TouchableOpacity onPress={() => decreaseQuantity(item.id)} style={styles.button}>
+                      <Text style={styles.buttonText}>-</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.quantity}>{item.quantity}</Text>
+                    <TouchableOpacity onPress={() => increaseQuantity(item.id)} style={styles.button}>
+                      <Text style={styles.buttonText}>+</Text>
+                    </TouchableOpacity>
+                  </View>
 
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <Button title="➖" onPress={() => decreaseQuantity(item.id)} />
-                  <Text style={{ marginHorizontal: 10 }}>{item.quantity}</Text>
-                  <Button title="➕" onPress={() => increaseQuantity(item.id)} />
+                  {/* Remove Item Button */}
+                  <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeButton}>
+                    <Text style={styles.removeButtonText}>Remove</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             )}
           />
 
-          <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
-            Total: ${totalPrice.toFixed(2)}
-          </Text>
+          {/* Total Amount */}
+          <View style={styles.totalContainer}>
+            <Text style={styles.totalText}>Total: ₹{totalPrice}</Text>
+            <TouchableOpacity style={styles.checkoutButton} onPress={() => Alert.alert("Proceed to Checkout!")}>
+              <Text style={styles.checkoutText}>Proceed to Checkout</Text>
+            </TouchableOpacity>
+          </View>
         </>
       )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#f8f8f8", padding: 10 },
+  emptyCartContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
+  emptyCartText: { fontSize: 18, fontWeight: "bold", color: "#555" },
+  shopNowButton: { backgroundColor: "blue", padding: 10, marginTop: 10, borderRadius: 5 },
+  shopNowText: { color: "#fff", fontSize: 16 },
+  cartItem: { flexDirection: "row", backgroundColor: "#fff", padding: 10, borderRadius: 8, marginBottom: 10 },
+  image: { width: 80, height: 80, borderRadius: 10 },
+  details: { flex: 1, marginLeft: 10 },
+  name: { fontSize: 14, fontWeight: "bold", color: "#333" },
+  price: { fontSize: 14, color: "#000", marginVertical: 4 },
+  quantityControl: { flexDirection: "row", alignItems: "center", marginTop: 5 },
+  button: { backgroundColor: "#ddd", padding: 5, borderRadius: 5, marginHorizontal: 5 },
+  buttonText: { fontSize: 18, fontWeight: "bold" },
+  quantity: { fontSize: 16, fontWeight: "bold", color: "#333" },
+  removeButton: { marginTop: 5, backgroundColor: "red", padding: 5, borderRadius: 5 ,marginRight: 200},
+  removeButtonText: { color: "#fff", fontSize: 12,textAlign:"center"},
+  totalContainer: { backgroundColor: "#fff", padding: 10, borderRadius: 8, marginTop: 10 },
+  totalText: { fontSize: 18, fontWeight: "bold" },
+  checkoutButton: { backgroundColor: "green", padding: 10, marginTop: 10, borderRadius: 5, alignItems: "center" },
+  checkoutText: { color: "#fff", fontSize: 16 },
+});
 
 export default CartScreen;

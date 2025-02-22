@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ProductList = ({navigation}) => {
+const SimilarProduct = ({navigation}) => {
   return (
     <View>
-      <Text>ProductList</Text>
+      <Text>SimilarProduct</Text>
     </View>
   )
 }
 
-export default ProductList
+export default SimilarProduct
 
 const styles = StyleSheet.create({})

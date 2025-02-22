@@ -2,55 +2,55 @@ import React, { useContext, useState, useEffect } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { CartContext } from "../Context/CartContext";
 
-const sampleProduct = {
-  id: "3",
-  name: "iPhone 14",
-  price: 999,
-  description: "128GB, Midnight Black - Experience the power of Apple's latest smartphone.",
-  image: require("../Assets/iphone14.jpg"),
+const lapProduct = {
+  id: "2",
+  name: "Asus VivoBook 15",
+  price: 699,
+  description: "15.6-inch FHD, Intel Core i5, 8GB RAM, 512GB SSD - Sleek and powerful performance for everyday computing.",
+  image: require("../Assets/Lap.jpg"),
   features: [
-    "6.1-inch Super Retina XDR Display",
-    "A15 Bionic Chip for Lightning-fast Performance",
-    "Advanced Dual-Camera System (12MP Main + 12MP Ultra Wide)",
-    "Cinematic Mode for 4K Dolby Vision Recording",
-    "All-Day Battery Life",
+    "15.6-inch Full HD Display",
+    "Intel Core i5 11th Gen Processor",
+    "8GB DDR4 RAM, 512GB SSD Storage",
+    "Intel UHD Graphics",
+    "Lightweight Design with a Premium Finish",
   ],
   specifications: [
-    { key: "Brand", value: "Apple" },
-    { key: "Model", value: "iPhone 14" },
-    { key: "Display", value: "6.1-inch OLED" },
-    { key: "Processor", value: "A15 Bionic Chip" },
-    { key: "RAM", value: "6GB" },
-    { key: "Storage", value: "128GB" },
-    { key: "Battery", value: "3,279mAh" },
-    { key: "Charging", value: "20W Fast Charging" },
-    { key: "OS", value: "iOS 16" },
+    { key: "Brand", value: "Asus" },
+    { key: "Model", value: "VivoBook 15" },
+    { key: "Display", value: "15.6-inch FHD (1920x1080)" },
+    { key: "Processor", value: "Intel Core i5-1135G7" },
+    { key: "RAM", value: "8GB DDR4" },
+    { key: "Storage", value: "512GB SSD" },
+    { key: "Battery", value: "42Wh, up to 6 hours" },
+    { key: "Charging", value: "65W Fast Charging" },
+    { key: "OS", value: "Windows 11" },
   ],
 };
 
-const HeaderComponent = ({ navigation }) => {
+const HeaderComponent2 = ({ navigation }) => {
   const { addToCart, cart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
 
   useEffect(() => {
-    const foundItem = cart.some((item) => item.id === sampleProduct.id);
+    const foundItem = cart.some((item) => item.id === lapProduct.id);
     setIsInCart(foundItem);
   }, [cart]);
 
   const handleAddToCart = () => {
-    addToCart(sampleProduct);
+    addToCart(lapProduct);
   };
 
   return (
     <ScrollView style={styles.container} nestedScrollEnabled={true}>
       {/* Product Image */}
-      <Image source={sampleProduct.image} style={styles.productImage} />
+      <Image source={lapProduct.image} style={styles.productImage} />
 
       {/* Product Details */}
       <View style={styles.detailsContainer}>
-        <Text style={styles.productName}>{sampleProduct.name}</Text>
-        <Text style={styles.price}>₹{sampleProduct.price}</Text>
-        <Text style={styles.description}>{sampleProduct.description}</Text>
+        <Text style={styles.productName}>{lapProduct.name}</Text>
+        <Text style={styles.price}>₹{lapProduct.price}</Text>
+        <Text style={styles.description}>{lapProduct.description}</Text>
       </View>
 
       {/* Buttons */}
@@ -72,7 +72,7 @@ const HeaderComponent = ({ navigation }) => {
       {/* Features Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Key Features</Text>
-        {sampleProduct.features.map((feature, index) => (
+        {lapProduct.features.map((feature, index) => (
           <Text key={index} style={styles.listItem}>• {feature}</Text>
         ))}
       </View>
@@ -80,15 +80,13 @@ const HeaderComponent = ({ navigation }) => {
       {/* Specifications Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Specifications</Text>
-        {sampleProduct.specifications.map((spec, index) => (
+        {lapProduct.specifications.map((spec, index) => (
           <View key={index} style={styles.specRow}>
             <Text style={styles.specKey}>{spec.key}</Text>
             <Text style={styles.specValue}>{spec.value}</Text>
           </View>
         ))}
       </View>
-
-      
     </ScrollView>
   );
 };
@@ -119,4 +117,4 @@ const styles = StyleSheet.create({
   buttonText: { color: "#fff", fontWeight: "bold", fontSize: 16, textAlign: "center" },
 });
 
-export default HeaderComponent;
+export default HeaderComponent2;

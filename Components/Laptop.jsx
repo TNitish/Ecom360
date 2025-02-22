@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { useNavigation } from '@react-navigation/native';
 
 const products = [
   {
@@ -33,79 +34,83 @@ const products = [
   },
 ];
 
-const ProductItem = ({ item }) => (
-  <View style={styles.card}>
-    <View style={styles.row}>
-      <View style={styles.details}>
-        <Text style={styles.title}>{item.name}</Text>
-        <Text style={styles.price}>{item.price}</Text>
-        <Text style={styles.discount}>{item.discountPrice}</Text>
-      </View>
-      <FastImage source={item.image} style={styles.image} resizeMode={FastImage.resizeMode.contain} />
-    </View>
-  </View>
-);
-
 const Laptop = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.header}>ASUS Vivobook 15 Series</Text>
-      <FlatList
-        data={products}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ProductItem item={item} />}
-      />
-    </View>
+      {products.map((item) => (
+        <TouchableOpacity key={item.id} style={styles.card} onPress={() => navigation.navigate('HeaderComponent2', { product: item })}>
+          <View style={styles.row}>
+            <View style={styles.details}>
+              <Text style={styles.title}>{item.name}</Text>
+              <Text style={styles.price}>{item.price}</Text>
+              <Text style={styles.discount}>{item.discountPrice}</Text>
+            </View>
+            <FastImage source={item.image} style={styles.image} resizeMode={FastImage.resizeMode.contain} />
+          </View>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
-    padding: 10,
+    backgroundColor: '#f0f0f5',
+    padding: 15,
   },
   header: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 15,
+    color: '#333',
+    textAlign: 'center',
   },
   card: {
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 12,
     padding: 15,
-    marginBottom: 10,
+    marginBottom: 12,
+    elevation: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
     shadowColor: '#000',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flex: 1,
   },
   details: {
     flex: 1,
+    paddingRight: 10,
   },
   image: {
-    width: 100,
-    height: 100,
-    marginLeft: 15,
+    width: 120,
+    height: 120,
+    borderRadius: 8,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#222',
+    marginBottom: 5,
   },
   price: {
     fontSize: 14,
-    color: 'green',
+    color: '#27ae60',
     fontWeight: 'bold',
-    marginTop: 5,
   },
   discount: {
     fontSize: 12,
-    color: 'gray',
-    marginTop: 5,
+    color: '#777',
+    marginTop: 3,
   },
 });
 

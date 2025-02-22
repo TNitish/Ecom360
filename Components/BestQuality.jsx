@@ -8,7 +8,12 @@ const categories = [
   { id: '4', title: 'Vehicle Styling', subtitle: 'New Range', image: require('../Assets/mini.jpg') },
 ];
 
-const BestQuality= () => {
+const BestQuality = ({navigation}) => {
+  const handleCategoryPress = (id) => {
+    // Handle category press here (navigate, show details, etc.)
+    console.log(`Category ${id} pressed`);
+  };
+
   return (
     <View style={styles.container}>
       {/* Header Section */}
@@ -25,11 +30,14 @@ const BestQuality= () => {
         numColumns={2}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.card}>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => handleCategoryPress(item.id)} // Handle the press for each category
+          >
             <Image source={item.image} style={styles.image} />
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.subtitle}>{item.subtitle}</Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
