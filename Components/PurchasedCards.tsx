@@ -117,7 +117,7 @@ const PurchasedCards = ({ navigation }) => {
     return (
       <TouchableOpacity
         key={item.id}
-        onPress={() => navigation.navigate("ProductList", { Category: item.category })}
+        onPress={() => navigation.navigate("Location", { Category: item.category })}
         onMouseEnter={onHoverStart} 
         onMouseLeave={onHoverEnd}
         accessibilityLabel={`View details about ${item.category}`}

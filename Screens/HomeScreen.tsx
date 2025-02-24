@@ -15,6 +15,8 @@ import AlteredProductSlide1 from '../Components/AlteredProductSlide1'
 
 
 
+
+
 const HomeScreen = ({navigation}) => {
   return (
     
@@ -24,12 +26,14 @@ const HomeScreen = ({navigation}) => {
     
     <Carousel navigation={navigation} />
     <RecommendedProducts navigation={navigation} />
+    
     <PurchasedCards navigation={navigation} />
     <Sponsered navigation={navigation} />
     <SamsungS25Series navigation={navigation} />
     <SeasonsTopTrends navigation={navigation} />
     <TopSaleDeals navigation={navigation} />
     <AlteredProductSlide1 navigation={navigation} />
+    
     
     
     

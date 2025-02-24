@@ -5,8 +5,8 @@ import { View,Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../Screens/HomeScreen";
 import ProductDetails from "../Screens/ProductDetails";
-import ProductList from "../Screens/ProductList";
-import ProductScreen from "../Screens/ProductList";
+import ProductList from "../Screens/ProductListScreen";
+import ProductScreen from "../Screens/ProductListScreen";
 import MensFootwear from "../Screens/SponseredList";
 import S25ultra from "../Screens/S25ultra";
 import HeaderComponent from "../Components/HeaderComponent";
@@ -14,6 +14,10 @@ import HeaderComponent2 from "../Components/HeaderComponent2";
 import Mini from "../Screens/Mini";
 import Laptop from "../Components/Laptop";
 import CarsoulProductList from "../Screens/CarsoulProductList";
+import CarsoulProduct from "../Screens/CarsoulProduct";
+import ValentineSpecial from "../Components/ValentineSpecial"; 
+import Locationinder from  "../Location/LocationFinder";
+import LocationFinder from "../Location/LocationFinder";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +35,9 @@ const StackNav=()=>{
             <Stack.Screen name="Lap" component={Laptop} />
             <Stack.Screen name="HeaderComponent2" component={HeaderComponent2} />
             <Stack.Screen name="CarsoulProd" component={CarsoulProductList} />
+            <Stack.Screen name="CarsoulProducttt" component={CarsoulProduct} />
+            <Stack.Screen name="Location" component={LocationFinder} />
+            
 
          </Stack.Navigator>
     )
