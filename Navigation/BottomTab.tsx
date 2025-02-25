@@ -95,8 +95,8 @@ export default BottomTab;
 const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: '#f8f8f8',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
     height: 60,
     elevation: 10,
     shadowColor: '#000',

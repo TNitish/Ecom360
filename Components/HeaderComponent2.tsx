@@ -64,7 +64,7 @@ const HeaderComponent2 = ({ navigation }) => {
             <Text style={styles.buttonText}>Add to Cart</Text>
           </TouchableOpacity>
         )}
-        <TouchableOpacity style={styles.buyNowButton}>
+        <TouchableOpacity style={styles.buyNowButton} onPress={() =>navigation.navigate("Buy")}>
           <Text style={styles.buttonText}>Buy Now</Text>
         </TouchableOpacity>
       </View>

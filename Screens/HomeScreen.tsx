@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet, Text, View , SafeAreaView } from 'react-native'
 import React from 'react'
 import Carousel from '../Components/Carousel'
-import HeaderComponent from '../Components/HeaderComponent'
 import RecommendedProducts from '../Components/RecommendedProducts'
 import PurchasedCards from '../Components/PurchasedCards'
 import Sponsered from '../Components/Sponsered'
@@ -11,34 +10,23 @@ import SearchingBar from '../Components/SearchingBar'
 import TopSaleDeals from './TopSasleDeals'
 import AlteredProductSlide1 from '../Components/AlteredProductSlide1'
 
-
-
-
-
-
-
 const HomeScreen = ({navigation}) => {
   return (
     
-    <ScrollView>
+<ScrollView>
 
 <SearchingBar />
     
     <Carousel navigation={navigation} />
     <RecommendedProducts navigation={navigation} />
-    
     <PurchasedCards navigation={navigation} />
     <Sponsered navigation={navigation} />
     <SamsungS25Series navigation={navigation} />
     <SeasonsTopTrends navigation={navigation} />
     <TopSaleDeals navigation={navigation} />
     <AlteredProductSlide1 navigation={navigation} />
-    
-    
-    
-    
-  
-    </ScrollView>
+
+</ScrollView>
     
    
     

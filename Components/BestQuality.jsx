@@ -8,9 +8,8 @@ const categories = [
   { id: '4', title: 'Vehicle Styling', subtitle: 'New Range', image: require('../Assets/mini.jpg') },
 ];
 
-const BestQuality = ({navigation}) => {
+const BestQuality = ({ navigation }) => {
   const handleCategoryPress = (id) => {
-    // Handle category press here (navigate, show details, etc.)
     console.log(`Category ${id} pressed`);
   };
 
@@ -29,10 +28,11 @@ const BestQuality = ({navigation}) => {
         data={categories}
         numColumns={2}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.flatListContent} // Ensure proper height for virtualization
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
-            onPress={() => handleCategoryPress(item.id)} // Handle the press for each category
+            onPress={() => handleCategoryPress(item.id)}
           >
             <Image source={item.image} style={styles.image} />
             <Text style={styles.title}>{item.title}</Text>
@@ -46,7 +46,8 @@ const BestQuality = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff', padding: 10 },
-  header: { backgroundColor: '#d8d2a4', padding: 15 },
+  flatListContent: { flexGrow: 1 }, // Ensures proper height for virtualization
+  header: { backgroundColor: '#d8d2a4', padding: 15, marginBottom: 10 },
   headerText: { fontSize: 18, fontWeight: 'bold', color: '#000' },
   exploreButton: { backgroundColor: '#505030', padding: 10, marginTop: 5, alignSelf: 'flex-start' },
   exploreText: { color: '#fff', fontSize: 14 },

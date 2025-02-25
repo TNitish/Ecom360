@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet ,Alert} from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { CartContext } from "../Context/CartContext";
 
 const CartScreen = ({ navigation }) => {
@@ -41,6 +41,14 @@ const CartScreen = ({ navigation }) => {
                   <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeButton}>
                     <Text style={styles.removeButtonText}>Remove</Text>
                   </TouchableOpacity>
+
+                  {/* Buy Now Button */}
+                  <TouchableOpacity 
+                    style={styles.buyNowButton} 
+                    onPress={() => navigation.navigate("Buy", { product: item })}
+                  >
+                    <Text style={styles.buyNowText}>Buy Now</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             )}
@@ -49,7 +57,7 @@ const CartScreen = ({ navigation }) => {
           {/* Total Amount */}
           <View style={styles.totalContainer}>
             <Text style={styles.totalText}>Total: ₹{totalPrice}</Text>
-            <TouchableOpacity style={styles.checkoutButton} onPress={() => Alert.alert("Proceed to Checkout!")}>
+            <TouchableOpacity style={styles.checkoutButton} onPress={() => navigation.navigate("Buy")}>
               <Text style={styles.checkoutText}>Proceed to Checkout</Text>
             </TouchableOpacity>
           </View>
@@ -65,17 +73,56 @@ const styles = StyleSheet.create({
   emptyCartText: { fontSize: 18, fontWeight: "bold", color: "#555" },
   shopNowButton: { backgroundColor: "blue", padding: 10, marginTop: 10, borderRadius: 5 },
   shopNowText: { color: "#fff", fontSize: 16 },
-  cartItem: { flexDirection: "row", backgroundColor: "#fff", padding: 10, borderRadius: 8, marginBottom: 10 },
+
+  cartItem: { 
+    flexDirection: "row", 
+    backgroundColor: "#fff", 
+    padding: 10, 
+    borderRadius: 8, 
+    marginBottom: 10,
+    alignItems: "center",
+  },
   image: { width: 80, height: 80, borderRadius: 10 },
   details: { flex: 1, marginLeft: 10 },
+
   name: { fontSize: 14, fontWeight: "bold", color: "#333" },
   price: { fontSize: 14, color: "#000", marginVertical: 4 },
+
   quantityControl: { flexDirection: "row", alignItems: "center", marginTop: 5 },
   button: { backgroundColor: "#ddd", padding: 5, borderRadius: 5, marginHorizontal: 5 },
   buttonText: { fontSize: 18, fontWeight: "bold" },
   quantity: { fontSize: 16, fontWeight: "bold", color: "#333" },
-  removeButton: { marginTop: 5, backgroundColor: "red", padding: 5, borderRadius: 5 ,marginRight: 200},
-  removeButtonText: { color: "#fff", fontSize: 12,textAlign:"center"},
+
+  removeButton: { 
+    marginTop: 10, 
+    backgroundColor: "red", 
+    paddingVertical: 8, 
+    paddingHorizontal: 12, 
+    borderRadius: 5, 
+    alignSelf: "flex-start"
+  },
+  removeButtonText: { 
+    color: "#fff", 
+    fontSize: 14, 
+    textAlign: "center", 
+    fontWeight: "bold"
+  },
+
+  buyNowButton: { 
+    marginTop: 10, 
+    backgroundColor: "#ff6f00", 
+    paddingVertical: 8, 
+    paddingHorizontal: 12, 
+    borderRadius: 5, 
+    alignSelf: "flex-start"
+  },
+  buyNowText: { 
+    color: "#fff", 
+    fontSize: 14, 
+    textAlign: "center", 
+    fontWeight: "bold"
+  },
+
   totalContainer: { backgroundColor: "#fff", padding: 10, borderRadius: 8, marginTop: 10 },
   totalText: { fontSize: 18, fontWeight: "bold" },
   checkoutButton: { backgroundColor: "green", padding: 10, marginTop: 10, borderRadius: 5, alignItems: "center" },

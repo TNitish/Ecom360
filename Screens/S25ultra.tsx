@@ -1,6 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import { 
+  View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Alert, FlatList, Dimensions
+} from 'react-native';
 import { CartContext } from '../Context/CartContext';
+
+const { width } = Dimensions.get('window');
 
 const productDetails = {
   id: "1",
@@ -14,17 +18,38 @@ const productDetails = {
     "Snapdragon 8 Gen 3 Processor",
     "S-Pen Support",
   ],
-  image: require("../Assets/S25ultra.webp"),
+  images: [
+    require("../Assets/S25ultra.webp"),
+    require("../Assets/S25ultra.webp"),
+    require("../Assets/S25ultra.webp"),
+    require("../Assets/S25ultra.webp"),
+  ],
   description: "Experience the power of Samsung Galaxy S25 Ultra with a 200MP camera, an immersive 6.8-inch AMOLED display, and lightning-fast performance."
 };
 
 const S25ultra = ({ navigation }) => {
   const { addToCart, cart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef(null);
 
   useEffect(() => {
     setIsInCart(cart.some(item => item.id === productDetails.id));
   }, [cart]);
+
+  // Auto-slide feature (Optional)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        let nextIndex = prevIndex + 1;
+        if (nextIndex >= productDetails.images.length) nextIndex = 0;
+        flatListRef.current.scrollToIndex({ index: nextIndex, animated: true });
+        return nextIndex;
+      });
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleAddToCart = () => {
     addToCart(productDetails);
@@ -32,8 +57,30 @@ const S25ultra = ({ navigation }) => {
 
   return (
     <ScrollView nestedScrollEnabled={true} style={styles.container}>
-      <Image source={productDetails.image} style={styles.productImage} />
-      
+      {/* Image Carousel */}
+      <FlatList
+        ref={flatListRef}
+        data={productDetails.images}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onMomentumScrollEnd={(event) => {
+          const newIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+          setCurrentIndex(newIndex);
+        }}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <Image source={item} style={styles.productImage} />
+        )}
+      />
+
+      {/* Pagination Dots */}
+      <View style={styles.pagination}>
+        {productDetails.images.map((_, index) => (
+          <View key={index} style={[styles.dot, currentIndex === index && styles.activeDot]} />
+        ))}
+      </View>
+
       <Text style={styles.productName}>{productDetails.name}</Text>
       <Text style={styles.productPrice}>
         ₹{productDetails.price} <Text style={styles.discount}>{productDetails.discount}</Text>
@@ -66,7 +113,7 @@ const S25ultra = ({ navigation }) => {
 
         <TouchableOpacity 
           style={styles.buyButton} 
-          onPress={() => Alert.alert('Proceeding to Checkout')}
+          onPress={() => navigation.navigate("Buy")}
         >
           <Text style={styles.buyButtonText}>Buy Now</Text>
         </TouchableOpacity>
@@ -77,13 +124,19 @@ const S25ultra = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff', padding: 16 },
-  productImage: { width: '100%', height: 300, resizeMode: 'cover', borderRadius: 10 },
+  productImage: { width, height: 300, resizeMode: 'cover', borderRadius: 10 },
+  
+  pagination: { flexDirection: 'row', justifyContent: 'center', marginTop: 10 },
+  dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#ccc', marginHorizontal: 4 },
+  activeDot: { backgroundColor: '#007bff' },
+
   productName: { fontSize: 22, fontWeight: 'bold', marginTop: 10 },
   productPrice: { fontSize: 20, color: '#000', fontWeight: 'bold', marginTop: 5 },
   discount: { color: 'green', fontSize: 16 },
   sectionHeader: { fontSize: 18, fontWeight: 'bold', marginTop: 15 },
   featureText: { fontSize: 16, marginTop: 5 },
   description: { fontSize: 16, marginTop: 10, color: '#555' },
+
   cartSection: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 },
   cartButton: { flex: 1, backgroundColor: '#ffaa00', padding: 15, alignItems: 'center', borderRadius: 10, marginRight: 10 },
   cartButtonText: { fontSize: 16, fontWeight: 'bold', color: '#fff' },

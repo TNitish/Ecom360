@@ -25,7 +25,7 @@ const CarsoulProductList = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.productCard}
-            onPress={() => navigation.navigate('S25ultra', { product: item })}>
+            onPress={() => navigation.navigate('CarsoulProduct', { product: item })}>
             <Image source={item.image} style={styles.productImage} />
             <Text style={styles.productName}>{item.name}</Text>
             <Text style={styles.productPrice}>{item.price}</Text>
