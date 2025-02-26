@@ -17,6 +17,7 @@ import CarsoulProductList from "../Screens/CarsoulProductList";
 import LocationFinder from "../Location/LocationFinder";
 import BuySection from "../BuySectionn/BuySection";
 import HelpCenter from "../Screens/HelpCenter";
+import CategoryGrid from "../Screens/CategoryGrid";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ const StackNav=()=>{
             <Stack.Screen name="Location" component={LocationFinder} />
             <Stack.Screen name="Buy" component={BuySection} />
             <Stack.Screen name="HelpCenter" component={HelpCenter} />
+            <Stack.Screen name="Category" component={CategoryGrid} />
             
 
          </Stack.Navigator>

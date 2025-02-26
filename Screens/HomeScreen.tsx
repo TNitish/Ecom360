@@ -9,6 +9,7 @@ import SeasonsTopTrends from '../Components/SeasonTopTrends'
 import SearchingBar from '../Components/SearchingBar'
 import TopSaleDeals from './TopSasleDeals'
 import AlteredProductSlide1 from '../Components/AlteredProductSlide1'
+import CategoryGrid from './CategoryGrid'
 
 const HomeScreen = ({navigation}) => {
   return (
@@ -18,6 +19,7 @@ const HomeScreen = ({navigation}) => {
 <SearchingBar />
     
     <Carousel navigation={navigation} />
+    <CategoryGrid navigation={navigation} />
     <RecommendedProducts navigation={navigation} />
     <PurchasedCards navigation={navigation} />
     <Sponsered navigation={navigation} />
