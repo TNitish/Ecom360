@@ -7,7 +7,7 @@ import { CartContext } from '../Context/CartContext';
 const { width } = Dimensions.get('window');
 
 const productDetails = {
-  id: "1",
+  id: "34",
   name: "Samsung Galaxy S25 Ultra",
   price: 129999,
   discount: "10% Off",

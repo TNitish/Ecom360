@@ -39,7 +39,7 @@ const CategoryGrid = () => {
               <TouchableOpacity 
                 key={item.id} 
                 style={styles.categoryItem}
-                onPress={() => navigation.navigate('ProductDetails', { categoryId: item.id })}
+                onPress={() => navigation.navigate('KeyIngredients', { categoryId: item.id })}
               >
                 <Image source={item.image} style={styles.image} />
                 <Text style={styles.text}>{item.name}</Text>

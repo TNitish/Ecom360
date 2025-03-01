@@ -7,9 +7,13 @@ import Sponsered from '../Components/Sponsered'
 import SamsungS25Series from '../Components/SamsungS25Series'
 import SeasonsTopTrends from '../Components/SeasonTopTrends'
 import SearchingBar from '../Components/SearchingBar'
-import TopSaleDeals from './TopSasleDeals'
+import TopSaleDeals from '../Screens/TopSasleDeals'
 import AlteredProductSlide1 from '../Components/AlteredProductSlide1'
-import CategoryGrid from './CategoryGrid'
+import CategoryGrid from '../Screens/CategoryGrid'
+
+
+
+
 
 const HomeScreen = ({navigation}) => {
   return (
@@ -27,7 +31,8 @@ const HomeScreen = ({navigation}) => {
     <SeasonsTopTrends navigation={navigation} />
     <TopSaleDeals navigation={navigation} />
     <AlteredProductSlide1 navigation={navigation} />
-
+    
+    
 </ScrollView>
     
    

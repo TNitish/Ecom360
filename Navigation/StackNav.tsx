@@ -14,10 +14,15 @@ import HeaderComponent2 from "../Components/HeaderComponent2";
 import Mini from "../Screens/Mini";
 import Laptop from "../Components/Laptop";
 import CarsoulProductList from "../Screens/CarsoulProductList";
+import CarsoulProduct from "../Screens/CarsoulProduct";
 import LocationFinder from "../Location/LocationFinder";
 import BuySection from "../BuySectionn/BuySection";
 import HelpCenter from "../Screens/HelpCenter";
 import CategoryGrid from "../Screens/CategoryGrid";
+import BestQuality from "../Components/BestQuality";
+import KeyIngredients from "../NewScreens/KeyIngredients";
+import IngredientDetail from "../NewScreens/IngredientDetail";
+import Orders from "../Screens/Orders";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,11 +39,21 @@ const StackNav=()=>{
             <Stack.Screen name="mini" component={Mini} />
             <Stack.Screen name="Lap" component={Laptop} />
             <Stack.Screen name="HeaderComponent2" component={HeaderComponent2} />
+
             <Stack.Screen name="CarsoulProd" component={CarsoulProductList} />
+            <Stack.Screen name="CarsoulProduct" component={CarsoulProduct} />
+
             <Stack.Screen name="Location" component={LocationFinder} />
             <Stack.Screen name="Buy" component={BuySection} />
-            <Stack.Screen name="HelpCenter" component={HelpCenter} />
+            
+            <Stack.Screen name="HelpCenter" component={HelpCenter} options={{ title: "Help Center" }} />
+            <Stack.Screen name="Orders" component={Orders} />
+
             <Stack.Screen name="Category" component={CategoryGrid} />
+            <Stack.Screen name="BestQuality" component={BestQuality} />
+            <Stack.Screen name="KeyIngredients" component={KeyIngredients} />
+            <Stack.Screen name="Ingredients" component={IngredientDetail} />
+            
             
 
          </Stack.Navigator>

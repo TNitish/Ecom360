@@ -98,9 +98,14 @@ const CartScreen = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeButton}>
-                  <Text style={styles.removeButtonText}>Remove</Text>
-                </TouchableOpacity>
+                <View style={styles.actionButtons}>
+                  <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeButton}>
+                    <Text style={styles.removeButtonText}>Remove</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.navigate("Buy", { item })} style={styles.buyNowButton}>
+                    <Text style={styles.buyNowButtonText}>Buy Now</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           )}
@@ -149,8 +154,11 @@ const styles = StyleSheet.create({
   buttonText: { fontSize: 18, fontWeight: "bold" },
   quantity: { fontSize: 16, fontWeight: "bold", color: "#333" },
 
-  removeButton: { marginTop: 10, backgroundColor: "red", paddingVertical: 8, borderRadius: 5 ,marginRight:"auto", },
-  removeButtonText: { color: "#fff", fontSize: 14, fontWeight: "bold",},
+  actionButtons: { flexDirection: "row", marginTop: 10 },
+  removeButton: { backgroundColor: "red", paddingVertical: 8, borderRadius: 5, marginRight: 10, flex: 1 },
+  removeButtonText: { color: "#fff", fontSize: 14, fontWeight: "bold", textAlign: "center" },
+  buyNowButton: { backgroundColor: "green", paddingVertical: 8, borderRadius: 5, flex: 1 },
+  buyNowButtonText: { color: "#fff", fontSize: 14, fontWeight: "bold", textAlign: "center" },
 
   totalContainer: { backgroundColor: "#fff", padding: 10, borderRadius: 8, marginTop: 10 },
   totalText: { fontSize: 18, fontWeight: "bold" },

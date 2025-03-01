@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "rea
 import { CartContext } from "../Context/CartContext";
 
 const lapProduct = {
-  id: "2",
+  id: "46",
   name: "Asus VivoBook 15",
   price: 699,
   description: "15.6-inch FHD, Intel Core i5, 8GB RAM, 512GB SSD - Sleek and powerful performance for everyday computing.",

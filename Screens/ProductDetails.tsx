@@ -5,7 +5,7 @@ import HeaderComponent from '../Components/HeaderComponent';
 // Product list with local images
 const products = [
   {
-    id: '11',
+    id: '35',
     name: 'Samsung Galaxy S23 Ultra (Phantom Black, 512 GB)',
     price: 124999,
     oldPrice: 134999,
@@ -17,7 +17,7 @@ const products = [
     offerPrice: 119999,
   },
   {
-    id: '12',
+    id: '36',
     name: 'iPhone 15 Pro Max (Titanium Blue, 256 GB)',
     price: 159999,
     oldPrice: 169999,
@@ -29,7 +29,7 @@ const products = [
     offerPrice: 149999,
   },
   {
-    id: '13',
+    id: '37',
     name: 'OnePlus 12 5G (Flowy Emerald, 512 GB)',
     price: 69999,
     oldPrice: 74999,
@@ -41,7 +41,7 @@ const products = [
     offerPrice: 66999,
   },
   {
-    id: '14',
+    id: '38',
     name: 'Google Pixel 8 Pro (Bay Blue, 128 GB)',
     price: 99999,
     oldPrice: 109999,
@@ -53,7 +53,7 @@ const products = [
     offerPrice: 94999,
   },
   {
-    id: '15',
+    id: '39',
     name: 'Redmi Note 13 Pro+ 5G (Fusion Black, 512 GB)',
     price: 34999,
     oldPrice: 39999,
@@ -65,7 +65,7 @@ const products = [
     offerPrice: 32999,
   },
   {
-    id: '16',
+    id: '40',
     name: 'Vivo X100 Pro (Astro Black, 256 GB)',
     price: 89999,
     oldPrice: 99999,
@@ -77,7 +77,7 @@ const products = [
     offerPrice: 85999,
   },
   {
-    id: '17',
+    id: '41',
     name: 'Realme GT 5G (Racing Yellow, 128 GB)',
     price: 34999,
     oldPrice: 39999,
@@ -89,7 +89,7 @@ const products = [
     offerPrice: 31999,
   },
   {
-    id: '18',
+    id: '42',
     name: 'Asus ROG Phone 7 (Phantom Black, 512 GB)',
     price: 99999,
     oldPrice: 109999,
@@ -101,7 +101,7 @@ const products = [
     offerPrice: 96999,
   },
   {
-    id: '19',
+    id: '43',
     name: 'Nothing Phone 2 (Dark Grey, 256 GB)',
     price: 45999,
     oldPrice: 49999,
@@ -113,7 +113,7 @@ const products = [
     offerPrice: 43999,
   },
   {
-    id: '20',
+    id: '44',
     name: 'iQOO 12 5G (Legend Edition, 256 GB)',
     price: 59999,
     oldPrice: 64999,
@@ -137,7 +137,7 @@ const ProductDetails = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("HeaderComponent")}
+            onPress={() => navigation.navigate("HeaderComponent",{Product : item.id})}
           >
             {/* Image Section */}
             <Image source={item.image} style={styles.image} />

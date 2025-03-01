@@ -13,6 +13,14 @@ const BestQuality = ({ navigation }) => {
     console.log(`Category ${id} pressed`);
   };
 
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.card} onPress={() => handleCategoryPress(item.id)}>
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.subtitle}>{item.subtitle}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
       {/* Header Section */}
@@ -28,33 +36,70 @@ const BestQuality = ({ navigation }) => {
         data={categories}
         numColumns={2}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.flatListContent} // Ensure proper height for virtualization
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => handleCategoryPress(item.id)}
-          >
-            <Image source={item.image} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.subtitle}>{item.subtitle}</Text>
-          </TouchableOpacity>
-        )}
+        renderItem={renderItem}
+        contentContainerStyle={styles.flatListContent}
+        nestedScrollEnabled={true} // ✅ Ensures smooth scrolling inside other VirtualizedLists
+        showsVerticalScrollIndicator={false} // Optional: hides scrollbar
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 10 },
-  flatListContent: { flexGrow: 1 }, // Ensures proper height for virtualization
-  header: { backgroundColor: '#d8d2a4', padding: 15, marginBottom: 10 },
-  headerText: { fontSize: 18, fontWeight: 'bold', color: '#000' },
-  exploreButton: { backgroundColor: '#505030', padding: 10, marginTop: 5, alignSelf: 'flex-start' },
-  exploreText: { color: '#fff', fontSize: 14 },
-  card: { flex: 1, margin: 5, backgroundColor: '#fff', padding: 10, borderRadius: 10, alignItems: 'center' },
-  image: { width: 150, height: 150, borderRadius: 10 },
-  title: { fontSize: 16, fontWeight: 'bold', marginTop: 5, textAlign: 'center' },
-  subtitle: { fontSize: 12, color: 'gray', textAlign: 'center' },
+  container: { 
+    flex: 1, // ✅ Takes full height, avoids nested ScrollView issue
+    backgroundColor: '#fff', 
+    padding: 10 
+  },
+  flatListContent: { 
+    flexGrow: 1, // ✅ Prevents FlatList from collapsing
+    paddingBottom: 20 // Adds spacing at the bottom
+  },
+  header: { 
+    backgroundColor: '#d8d2a4', 
+    padding: 15, 
+    marginBottom: 10 
+  },
+  headerText: { 
+    fontSize: 18, 
+    fontWeight: 'bold', 
+    color: '#000' 
+  },
+  exploreButton: { 
+    backgroundColor: '#505030', 
+    padding: 10, 
+    marginTop: 5, 
+    alignSelf: 'flex-start' 
+  },
+  exploreText: { 
+    color: '#fff', 
+    fontSize: 14 
+  },
+  card: { 
+    flex: 1, 
+    margin: 5, 
+    backgroundColor: '#fff', 
+    padding: 10, 
+    borderRadius: 10, 
+    alignItems: 'center',
+    elevation: 3, // Adds shadow for better UI
+  },
+  image: { 
+    width: 150, 
+    height: 150, 
+    borderRadius: 10 
+  },
+  title: { 
+    fontSize: 16, 
+    fontWeight: 'bold', 
+    marginTop: 5, 
+    textAlign: 'center' 
+  },
+  subtitle: { 
+    fontSize: 12, 
+    color: 'gray', 
+    textAlign: 'center' 
+  },
 });
 
 export default BestQuality;

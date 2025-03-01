@@ -18,7 +18,7 @@ const initialOrders = {
   ],
 };
 
-const OrdersScreen = () => {
+const Orders = ({ navigation }) => {
   const [orders, setOrders] = useState(initialOrders);
   const [selectedCategory, setSelectedCategory] = useState('current'); // Default category
 
@@ -62,7 +62,14 @@ const OrdersScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>My Orders</Text>
+      {/* Header Section */}
+      <View style={styles.header}>
+        <Text style={styles.heading}>My Orders</Text>
+        <TouchableOpacity style={styles.helpButton} onPress={() => navigation.navigate('HelpCenter')}>
+  <Text style={styles.helpText}>Help Center</Text>
+</TouchableOpacity>
+
+      </View>
 
       {/* Order Category Buttons */}
       <View style={styles.categoryContainer}>
@@ -111,11 +118,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingTop: 20,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
   heading: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 10,
     color: '#333',
+  },
+  helpButton: {
+    backgroundColor: '#2874F0',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 5,
+  },
+  helpText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   categoryContainer: {
     flexDirection: 'row',
@@ -216,4 +239,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrdersScreen;
+export default Orders;

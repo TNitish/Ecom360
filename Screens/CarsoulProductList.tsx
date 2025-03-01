@@ -2,17 +2,11 @@ import React from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 const products = [
-  { id: '4', name: 'iPhone 14', price: '₹79,999', image: require('../Assets/mini.jpg') },
-  { id: '5', name: 'Samsung S25 Ultra', price: '₹1,29,999', image: require('../Assets/mini.jpg') },
-  { id: '6', name: 'OnePlus 11', price: '₹56,999', image: require('../Assets/mini.jpg') },
-  { id: '7', name: 'Google Pixel 8', price: '₹74,999', image: require('../Assets/mini.jpg') },
-  { id: '8', name: 'Redmi Note 12 Pro', price: '₹24,999', image: require('../Assets/mini.jpg') },
-  { id: '9', name: 'Realme GT 3', price: '₹38,999', image: require('../Assets/mini.jpg') },
-  { id: '10', name: 'Vivo X90 Pro', price: '₹84,999', image: require('../Assets/mini.jpg') },
-  { id: '11', name: 'Asus ROG Phone 7', price: '₹69,999', image: require('../Assets/mini.jpg') },
-  { id: '12', name: 'Nothing Phone 2', price: '₹44,999', image: require('../Assets/mini.jpg') },
-  { id: '13', name: 'Moto Edge 40', price: '₹29,999', image: require('../Assets/mini.jpg') },
-  { id: '14', name: 'Oppo Find X6', price: '₹89,999', image: require('../Assets/mini.jpg') },
+  { id: '29', name: 'iPhone 14', price: '₹79,999', image: require('../Assets/mini.jpg') },
+  { id: '30', name: 'Samsung S25 Ultra', price: '₹1,29,999', image: require('../Assets/mini.jpg') },
+  { id: '31', name: 'OnePlus 11', price: '₹56,999', image: require('../Assets/mini.jpg') },
+  { id: '32', name: 'Google Pixel 8', price: '₹74,999', image: require('../Assets/mini.jpg') },
+  { id: '33', name: 'Redmi Note 12 Pro', price: '₹24,999', image: require('../Assets/mini.jpg') },
 ];
 
 const CarsoulProductList = ({ navigation }) => {

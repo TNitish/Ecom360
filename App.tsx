@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import BottomTab from './Navigation/BottomTab'
 import { CartProvider } from "./Context/CartContext";
 
+
 const App = () => {
   return (
     <CartProvider>

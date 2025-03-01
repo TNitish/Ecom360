@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "rea
 import { CartContext } from "../Context/CartContext";
 
 const sampleProduct = {
-  id: "3",
+  id: "45",
   name: "iPhone 14",
   price: 999,
   description: "128GB, Midnight Black - Experience the power of Apple's latest smartphone.",
