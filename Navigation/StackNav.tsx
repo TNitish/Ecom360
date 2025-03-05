@@ -52,7 +52,7 @@ const StackNav=()=>{
             <Stack.Screen name="Category" component={CategoryGrid} />
             <Stack.Screen name="BestQuality" component={BestQuality} />
             <Stack.Screen name="KeyIngredients" component={KeyIngredients} />
-            <Stack.Screen name="Ingredients" component={IngredientDetail} />
+            <Stack.Screen name="Ingredients" component={IngredientDetail}  />
             
             
 
